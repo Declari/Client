@@ -1,6 +1,6 @@
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { MatSliderModule } from '@angular/material/slider';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import { Component, HostBinding } from '@angular/core';
 import { NgbNavItem } from '@ng-bootstrap/ng-bootstrap';
 
 import {
@@ -13,14 +13,15 @@ import {
 } from '@angular/animations';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  animations: [
-    // animation triggers go here
-    
-  ]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class AppComponent {
-  title = 'declari';
+export class HeaderComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+  title = ' Declari';
 }

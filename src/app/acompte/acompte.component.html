@@ -1,0 +1,308 @@
+<br>
+<!---------------------------------------------------------->
+<form #loginForm="ngForm" (ngSubmit)="totale()">
+<h2 class="p-2 display-5 text-center">Acompte Provisionnel</h2>
+<h2 class="p-2 display-5 text-center">التصريح بالقسط الاحتياطي </h2>
+
+<div class="container">
+    <!--<h3>Available Items</h3>
+  <div class="row ">
+      <div id="{{ i }}" class="col-12  " *ngFor="let data of sampleSuggestionsArray; let i = index">
+          <div class="row    ">
+              <div class="col-6">
+                  <div class=" ">{{ data.nom }}</div>
+                  <small class=" ">{{ data.description }}</small>
+              </div>
+              <div class="col-2">
+                  <input class="w-100" disabled type="hidden" min="1" value="1" />
+        </div>
+  
+        <div class="col-2 ">
+                      <div>{{ data.prix | currency:"TND":"symbol" }}</div>
+        </div>
+        <div class="col-2">
+                      <button (click)="addToCart(data)" class="btn btn-secondary mb-1">
+            Add Item
+            <span class="icon-add_circle"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>-->
+    <hr />
+    <h3 class="text-center fw-bold">Base de calcul de l'acompte provisionnel</h3>
+    <h3 class="text-center">احتساب القس الاحتياطي</h3>
+    <br>
+    <div class="row">
+        <div class="col-12 ">
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>Assiette de l'impôt sur le revenu ou de l'impôt sur les sociétés</b>
+                    </div>
+                    <div>
+                        قاعدة احتساب الضريبة على الدخل أو الضريبة على الشركات بعنوان مداخيل أو أرباح السنة الفارطة
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.assietteimpot" (change)="totale();" min="0" type="number" value="0" name="assietteimpot" class="form-control" />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>Benifice ou Perte</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>Plus value</b>
+                    </div>
+                    <div>
+                        القیمة الزائدة
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.plusvalue" (change)="totale();" min="0" type="number" value="0" name="plusvalue" class="form-control" />
+                    <!-- (change)="totale();"-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>-</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>Moins value</b>
+                    </div>
+                    <div>
+                        القیمة الناقصة
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.moisvalue" (change)="totale();" min="0" type="number" value="0" name="moisvalue" class="form-control" />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>+</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+            <!----------------------------------------------------------------->
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>Asiette de l'impot theorique sur le revenue ou l'impot theorique sur les sociétés.</b>
+                    </div>
+                    <div>
+                        قاعدة احتساب الضریبة النظریة قاعدة احتساب الأقساط الاحتیاطیة
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.total" (change)="totale();" min="0" type="number" value="0" name="total" class="form-control" disabled />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>Totale Asiette de l'impot (Bénéfice ou Perte)</div>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <!----------------------------------------------------------------->
+            <!----------------------------------------------------------------->
+            <h2 class="p-2 display-5 text-center"></h2>
+            <h3 class="text-center fw-bold ">Impot de l'année N-1</h3>
+            <h3 class="p-2 display-5 text-center">او الحد الادنى للضريبة</h3>
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>Impot théorique base de calcul des acomptes provisionnels</b>
+                    </div>
+                    <div>
+                        الضریبة النظریة قاعدة احتساب الأقساط الاحتیاطیة.
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.impot" (change)="totale();" min="0" type="number" value="0" name="impot" class="form-control" />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>Bénéfice ou Perte</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+            <!----------------------------------------------------------------->
+            <br>
+           
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>30% de l'impot théorique</b>
+                    </div>
+                    <div>
+                        30 %من الضریبة النظریة
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.impot30" (change)="totale();" min="0" type="number" value="0" name="impot30" class="form-control" disabled/>
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>+</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+            <!----------------------------------------------------------------->
+            <hr>
+            <br>
+            <h3 class="text-center fw-bold ">A déduire</h3>
+            <h3 class="text-center">الخصم من المورد و الاقصاط و التسبقات القابلة للطرح :</h3>
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b></b>
+                    </div>
+                    <div>
+                        <b>Excédent d'impot dégagé sur la déclaration au titre des revenus ou bénéfice de l'année précédente</b>
+                    </div>
+                    <div>
+                        فائض الضريبة الناتج عن التصريح بعنوان مداخيل أو أرباح السنة الفارطة
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.excedent" (change)="totale();" min="0" type="number" value="0" name="excedent" class="form-control" />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>- ou 0</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+            
+            <!----------------------------------------------------------------->
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>Retenue à la source.</b>
+                    </div>
+                    <div>
+                        المبالغ المخصومة من المورد في شكل تسبقات
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.retenuesource" (change)="totale();" min="0" type="number" value="0" name="retenuesource" class="form-control" />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>-</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+
+            <!----------------------------------------------------------------->
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>Avance au taux de 10% sur les produits importés.</b>
+                    </div>
+                    <div>
+                       التسبقة بنسبة 10% على المنتجات الموردة
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.import10" (change)="totale();" min="0" type="number" value="0" name="import10" class="form-control" />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>-</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+
+            <!----------------------------------------------------------------->
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>1 % Avance sur les ventes aux personnes physiques soumises à impot sur la base d'une assiette forfaitaire dans la catégorie des bénifices des professions non commerciales.</b>
+                    </div>
+                    <div>
+                        التسبقة 1% الموظفة على بيوع المؤسسات الصناعية ومؤسسات تجارة الجملة الى الاشخاص الطبيعيين الخاضعين للضريبة على الدخل على أساس قاعدة تقديرية في صنف أرباح المهن غير التجارية
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.cent1" (change)="totale();" min="0" type="number" value="0" name="cent1" class="form-control" />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>-</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+
+            <!----------------------------------------------------------------->
+            <br>
+            <div class="row">
+                <div class="col-6">
+                    <div>
+                        <b>Excédent de l'acompte provisionnel précédent.</b>
+                    </div>
+                    <div>
+                        فائض القسط الإحتیاطي السابق
+                    </div>
+                </div>
+                <div class="col-2 p-0">
+                    <input [(ngModel)]="acompte1.report" (change)="totale();" min="0" type="number" value="0" name="report" class="form-control" />
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0">
+                    <div #subTotalWrap>- ou 0</div>
+                </div>
+            </div>
+            <!----------------------------------------------------------------->
+
+            <!----------------------------------------------------------------->
+            <br>
+            <div class="row">
+
+            </div>
+            <!----------------------------------------------------------------->
+
+        </div>
+
+        <div class="col-12 mx-auto">
+            <hr />
+            <div>
+                <div class="col-2 p-0 mx-auto">
+                    
+                    
+                        <b>Totale</b>
+                        <br>
+                        <small>Reste : (P) à Payer ou (R) à Reporter.</small>
+                    
+                </div>
+                <div class="col-2 p-0 mx-auto">
+                    <input [(ngModel)]="acompte1.Payer_reporter" (change)="totale();" type="number" value="0" name="Payer_reporter" class="form-control" disabled/>
+                    <!-- (change)=""-->
+                </div>
+                <div class="col-2 pr-0 mx-auto">
+                    <div #subTotalWrap><small>+ pour Payer & - pour Reporter</small></div>
+                </div>
+                <hr>
+                <button class="btn btn-danger  " (click)="effacer()"> Vider les champs</button>
+                <!-- (click)="clearCart(items)"> -->
+            </div>
+        </div>
+    </div>
+
+</div>
+</form>
