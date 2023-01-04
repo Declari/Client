@@ -17,12 +17,15 @@ export class AcompteComponent implements OnInit {
 
 
   acompte1 = new Acompte;
-  
+  yearsList: number[] = []
+  tvaLetters: string[] = ['A', 'P', 'B', 'D', 'N']
+  categoryLetters: string[] = ['M', 'P', 'C', 'N', 'E']
 
-  constructor(private router: Router) { 
-    
+
+  constructor(private router: Router) {
+
   }
-  
+
   ngOnInit(): void {
     this.acompte1.assietteimpot = 0;
     this.acompte1.plusvalue = 0;
@@ -41,10 +44,14 @@ export class AcompteComponent implements OnInit {
     this.acompte1.report = 0;
 
     this.acompte1.Payer_reporter = 0;
-    
+
+    for (let i = 2000; i <= 2100; i++) {
+      this.yearsList.push(i)
+    }
+
   }
 
-  
+
 
   totale() {
 
@@ -57,7 +64,7 @@ export class AcompteComponent implements OnInit {
 
     this.acompte1.impot30 = this.acompte1.impot * 0.3;
 
-    this.acompte1.Payer_reporter =this.acompte1.total + this.acompte1.impot30 - this.acompte1.excedent - this.acompte1.retenuesource - this.acompte1.import10 - this.acompte1.cent1 - this.acompte1.report;
+    this.acompte1.Payer_reporter = this.acompte1.total + this.acompte1.impot30 - this.acompte1.excedent - this.acompte1.retenuesource - this.acompte1.import10 - this.acompte1.cent1 - this.acompte1.report;
 
   }
 
@@ -81,6 +88,6 @@ export class AcompteComponent implements OnInit {
     this.acompte1.report = 0;
 
     this.acompte1.Payer_reporter = 0;
-    
+
   }
 }
