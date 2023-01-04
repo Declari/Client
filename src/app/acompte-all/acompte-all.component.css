@@ -1,0 +1,11 @@
+@media screen and (max-width: 995px) {
+    .sm-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .sm-w-23rem {
+        width: 23rem !important;
+    }
+}
