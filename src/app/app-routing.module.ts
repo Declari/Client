@@ -1,3 +1,4 @@
+import { AcompteDetailComponent } from './acompte-detail/acompte-detail.component';
 import { AcompteComponent } from './acompte/acompte.component';
 import { AcompteAllComponent } from './acompte-all/acompte-all.component';
 import { SignUpMoraleComponent } from './sign-up-morale/sign-up-morale.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
       { path: 'declari', component: DeclariComponent },
       { path: 'acompte', component: AcompteComponent },
       { path: 'acompteall', component: AcompteAllComponent },
+      { path: 'acomptedetail', component: AcompteDetailComponent },
 
 
     ]
