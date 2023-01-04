@@ -52,7 +52,7 @@ import { SignUpPhysiqueComponent } from './sign-up-physique/sign-up-physique.com
 import { SignUpMoraleComponent } from './sign-up-morale/sign-up-morale.component';
 import { ChoiceComponent } from './choice/choice.component';
 import { AcompteComponent } from './acompte/acompte.component';
-import { DeclariAllComponent } from './declari-all/declari-all.component';
+
 import { AcompteAllComponent } from './acompte-all/acompte-all.component';
 import { AcompteUpdateComponent } from './acompte-update/acompte-update.component';
 import { AcompteDetailComponent } from './acompte-detail/acompte-detail.component';
@@ -74,7 +74,6 @@ import { AcompteDetailComponent } from './acompte-detail/acompte-detail.componen
     SignUpMoraleComponent,
     ChoiceComponent,
     AcompteComponent,
-    DeclariAllComponent,
     AcompteAllComponent,
     AcompteUpdateComponent,
     AcompteDetailComponent,
