@@ -66,3 +66,7 @@ ngb-carousel .picsum-img-wrapper > img {
 .btn-danger.active {
   background-color: #253f94 \9;
 }
+
+.espacement {
+    margin-bottom: 200px;
+}
