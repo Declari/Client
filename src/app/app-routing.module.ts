@@ -1,4 +1,5 @@
 import { AcompteComponent } from './acompte/acompte.component';
+import { AcompteAllComponent } from './acompte-all/acompte-all.component';
 import { SignUpMoraleComponent } from './sign-up-morale/sign-up-morale.component';
 import { SignUpPhysiqueComponent } from './sign-up-physique/sign-up-physique.component';
 import { DeclariComponent } from './declari/declari.component';
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: "", redirectTo: "declari", pathMatch: "full" },
       { path: 'declari', component: DeclariComponent },
       { path: 'acompte', component: AcompteComponent },
+      { path: 'acompteall', component: AcompteAllComponent },
 
 
     ]
