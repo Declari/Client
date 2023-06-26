@@ -56,10 +56,12 @@ export class SignInComponent implements OnInit {
         //this.authService.login(this.user);
         this.authService.login(this.user).subscribe((o: any) => {
           console.log(o.status);
-          if (o.status == "OK"){
+          if (o.status == 200){
             this.loginValid = false;
             //this.router.navigate(['/']);
-        setTimeout(() => {this.router.navigate(['/home/declari'],)}, 70);
+            this.authService.SignIn(this.user.email);
+            
+        setTimeout(() => {this.router.navigate(['/home/declari'],)}, 1);
           }
         });
 

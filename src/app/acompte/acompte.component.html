@@ -1,5 +1,22 @@
 <br>
 <!---------------------------------------------------------->
+<br>
+<!---------------------------------------------------------->
+<div class="container">
+<div class="row">
+    <div class="col-12 ">
+        <div class="row">
+            <div class="col-6">
+                <div>
+                    <button class="btn btn-dark shadow mt-2 px-5   " [routerLink]="['/home/acompteall']">
+                        Retour</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<!---------------------------------------------------------->
 <form #loginForm="ngForm" (ngSubmit)="totale()">
     <h2 class="p-2 display-5 text-center">Acompte Provisionnel</h2>
     <h2 class="p-2 display-5 text-center">التصريح بالقسط الاحتياطي </h2>
@@ -14,8 +31,7 @@
                         Code acte <br>
                         رمز التصريح
                     </label>
-
-                    <input type="text" class="form-control">
+                    <input [(ngModel)]="a.code" type="text" class="form-control" name="code">
                 </div>
             </div>
 
@@ -26,8 +42,8 @@
                         السنة
                     </label>
 
-                    <select class="form-select" aria-label="Default select example">
-                        <option *ngFor="let year of yearsList">{{year}}</option>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="a.year" name="year">
+                        <option *ngFor="let year of yearsList" [ngValue]="year">{{year}}</option>
                     </select>
                 </div>
             </div>
@@ -39,7 +55,10 @@
                         القسط
                     </label>
 
-                    <input type="number" class="form-control" max="3" min="1">
+                    <!--<input type="number" class="form-control" max="3" min="1">-->
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="a.num" name="num">
+                        <option *ngFor="let num of numList" [ngValue]="num">{{num}}</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -54,7 +73,7 @@
                         المعرف الجبائي
                     </label>
 
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="a.matricule" name="matricule">
                 </div>
             </div>
 
@@ -65,8 +84,8 @@
                         المعرف الجبائي
                     </label>
 
-                    <select class="form-select" aria-label="Default select example">
-                        <option *ngFor="let char of tvaLetters">{{char}}</option>
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="a.tva" name="tva">
+                        <option *ngFor="let char of tvaLetters" [ngValue]="char">{{char}}</option>
                     </select>
                 </div>
             </div>
@@ -78,8 +97,8 @@
                         رمز الصنف
                     </label>
 
-                    <select class="form-select" aria-label="Default select example">
-                        <option *ngFor="let char of categoryLetters">{{char}}</option>
+                    <select class="form-select" aria-label="Default select example" class="form-control" [(ngModel)]="a.categorie" name="categorie">
+                        <option *ngFor="let char of categoryLetters" [ngValue]="char">{{char}}</option>
                     </select>
                 </div>
             </div>
@@ -94,7 +113,7 @@
                         Nom et Prénom OU Raison Social <br>
                         الاسم واللقب أو الاسم الاجتماعي
                     </label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="a.name" name="name">
                 </div>
 
                 <div class="mb-3">
@@ -103,7 +122,7 @@
                         العنوان أو المقر الاجتماعي
 
                     </label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="a.adress" name="adress">
                 </div>
 
                 <div class="mb-3">
@@ -111,7 +130,7 @@
                         Code Postal <br>
                         الترقيم البريدي
                     </label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="a.postal" name="postal">
                 </div>
 
                 <div class="mb-3">
@@ -119,7 +138,7 @@
                         Activité <br>
                         النشاط
                     </label>
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" [(ngModel)]="a.act" name="act">
                 </div>
             </div>
         </div>
@@ -435,6 +454,8 @@
                     <hr>
                     <button class="btn btn-danger mb-5 espacement" (click)="effacer()"> Vider les champs</button>
                     <!-- (click)="clearCart(items)"> -->
+                &nbsp;&nbsp;&nbsp;
+                <button class="btn btn-success shadow  px-5 mb-5 espacement " (click)="Ajouter()" > Ajouter Acompte Provisionnel</button>
                 </div>
             </div>
         </div>

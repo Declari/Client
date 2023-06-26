@@ -27,6 +27,9 @@ const routes: Routes = [
     path: 'login', component: SignInComponent,
   },
   {
+    path: 'logout', component: SignOutComponent,
+  },
+  {
     path: 'register', component: SignUpPhysiqueComponent,
   },
   {

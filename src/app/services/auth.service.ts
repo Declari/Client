@@ -61,4 +61,40 @@ export class AuthService {
       return this.http.post<PersonnePhysique>("http://localhost:3700/api/physique/signup", usr, httpOptions);
     }
 
+
+    //Local Data
+    SignIn(mail : string) {
+      this.isloggedIn = true;
+      localStorage.setItem('isloggedIn', String(this.isloggedIn));
+
+      
+      localStorage.setItem('loggedPersonne', mail);
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+
+
+  logout() {
+    this.isloggedIn = false;
+
+    localStorage.removeItem('loggedPersonne');
+    localStorage.removeItem('loggedUser');
+    localStorage.removeItem('AdminOrUser');
+    localStorage.setItem('isloggedIn', String(this.isloggedIn));
+    
+    this.router.navigate(['/login']);
+  }
+
+  ////////////////////////////////////////////////
+
+
+  isClient(): Boolean {
+    //if (!this.loggedPersonne) //this.loggedUser == undefiened
+    if (!this.isloggedIn)
+      return false;
+    return true;
+  }
+
+////////////////////////////////////////////////
+
 }

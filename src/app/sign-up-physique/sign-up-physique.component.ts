@@ -46,10 +46,10 @@ export class SignUpPhysiqueComponent implements OnInit {
           
           console.log(usr); 
         
-          if(usr == 201){
+          if(usr.status == 'OK'){
             this.loginValid = false;
             //this.router.navigate(['/users']);
-            setTimeout(() => {this.router.navigate(['/login'],)}, 70);
+            setTimeout(() => {this.router.navigate(['/login'],)}, 1);
             /*this.router.navigate(['/users']).then(() => {
                                                         window.location.reload();
                                                       });*/
